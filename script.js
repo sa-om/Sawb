@@ -154,8 +154,7 @@
     });
   }
 
-  // 7. Full WhatsApp Form Handler (Smart Language Detection)
-// 7. Full WhatsApp Form Handler (Smart Language Detection)
+  // 7. Full WhatsApp Form Handler (Smart Language Detection & Bulletproof Emojis)
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -192,18 +191,24 @@ if (contactForm) {
         travelDates = `From ${fromEn} to ${toEn}`;
     }
     
+    // Emojis defined safely as Unicode escape codes to prevent garbled text
+    const iconStar = '\u{1F31F}';     // 🌟
+    const iconPerson = '\u{1F464}';   // 👤
+    const iconCalendar = '\u{1F4C5}'; // 📅
+    const iconPin = '\u{1F4CD}';      // 📍
+    const iconMemo = '\u{1F4DD}';     // 📝
+
     let message = "";
     
     if (isArabic) {
-        // Changed "التواريخ" to "فترة السفر"
-        message = `مرحباً فريق صوب! 🌟\n\nأنا مهتم بحجز رحلة.\n\n👤 الاسم: ${name}\n📅 فترة السفر: ${travelDates}\n📍 المدينة: ${city}`;
+        message = `مرحباً فريق صوب! ${iconStar}\n\nأنا مهتم بحجز رحلة.\n\n${iconPerson} الاسم: ${name}\n${iconCalendar} فترة السفر: ${travelDates}\n${iconPin} المدينة: ${city}`;
         if (messageText) {
-            message += `\n\n📝 تفاصيل إضافية:\n${messageText}`;
+            message += `\n\n${iconMemo} تفاصيل إضافية:\n${messageText}`;
         }
     } else {
-        message = `Hello Sawb Team! 🌟\n\nI am interested in booking a trip.\n\n👤 Name: ${name}\n📅 Travel Period: ${travelDates}\n📍 City: ${city}`;
+        message = `Hello Sawb Team! ${iconStar}\n\nI am interested in booking a trip.\n\n${iconPerson} Name: ${name}\n${iconCalendar} Travel Period: ${travelDates}\n${iconPin} City: ${city}`;
         if (messageText) {
-            message += `\n\n📝 Additional Details:\n${messageText}`;
+            message += `\n\n${iconMemo} Additional Details:\n${messageText}`;
         }
     }
     

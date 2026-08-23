@@ -14,7 +14,7 @@
   const heroShade = document.querySelector(".hero-shade");
   const parallaxBg = document.querySelector('.parallax-bg');
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const whatsappNumber = "79028615896";
+  const whatsappNumber = "79962282525";
 
   // Performance Helper: Throttle for scroll events
   const throttle = (fn, wait) => {

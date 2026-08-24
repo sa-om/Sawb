@@ -191,27 +191,40 @@ if (contactForm) {
         travelDates = `From ${fromEn} to ${toEn}`;
     }
     
-    // Emojis defined safely as Unicode escape codes to prevent garbled text
-    const iconStar = '\u{1F31F}';     // 🌟
-    const iconPerson = '\u{1F464}';   // 👤
-    const iconCalendar = '\u{1F4C5}'; // 📅
-    const iconPin = '\u{1F4CD}';      // 📍
-    const iconMemo = '\u{1F4DD}';     // 📝
+   let message = "";
 
-    let message = "";
-    
-    if (isArabic) {
-        message = `مرحباً فريق صوب! ${iconStar}\n\nأنا مهتم بحجز رحلة.\n\n${iconPerson} الاسم: ${name}\n${iconCalendar} فترة السفر: ${travelDates}\n${iconPin} المدينة: ${city}`;
-        if (messageText) {
-            message += `\n\n${iconMemo} تفاصيل إضافية:\n${messageText}`;
-        }
-    } else {
-        message = `Hello Sawb Team! ${iconStar}\n\nI am interested in booking a trip.\n\n${iconPerson} Name: ${name}\n${iconCalendar} Travel Period: ${travelDates}\n${iconPin} City: ${city}`;
-        if (messageText) {
-            message += `\n\n${iconMemo} Additional Details:\n${messageText}`;
-        }
+if (isArabic) {
+    message = `مرحباً فريق صوب!
+
+أنا مهتم بحجز رحلة.
+
+الاسم: ${name}
+فترة السفر: ${travelDates}
+المدينة: ${city}`;
+
+    if (messageText) {
+        message += `
+
+تفاصيل إضافية:
+${messageText}`;
     }
-    
+
+} else {
+    message = `Hello Sawb Team!
+
+I am interested in booking a trip.
+
+Name: ${name}
+Travel Period: ${travelDates}
+City: ${city}`;
+
+    if (messageText) {
+        message += `
+
+Additional Details:
+${messageText}`;
+    }
+}
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   });
